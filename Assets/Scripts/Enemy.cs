@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
 
     void Shoot()
     {
