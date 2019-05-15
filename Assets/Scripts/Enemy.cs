@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float shootProbability;
     private AudioSource audio;
     public SpriteRenderer spriteRenderer;
+    public ParticleSystem particleSystem;
     private float scoreAmountIncrease;
 
     // Start is called before the first frame update
@@ -24,6 +25,8 @@ public class Enemy : MonoBehaviour
     {
         if(collision.tag == "PlayerBullet")
         {
+            particleSystem.startColor = spriteRenderer.color;
+            Instantiate(particleSystem, transform.position, new Quaternion(0, 0, 0, 0));
             GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().IncreaseScore(scoreAmountIncrease);
             GetComponentInParent<EnemyManager>().SpeedUpGame();
             audio.PlayOneShot(OnDeathSound);
