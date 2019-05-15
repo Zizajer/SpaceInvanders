@@ -99,7 +99,7 @@ MonoBehaviour:
   ShootForce: 15000
   shootProbability: 0.01
   spriteRenderer: {fileID: 1869692363428918903}
-  particleSystem: {fileID: 29962641151626369, guid: 86c6ce4cc61877945b812f74934411e6,
+  ExplosionEffect: {fileID: 29962641151626369, guid: 86c6ce4cc61877945b812f74934411e6,
     type: 3}
 --- !u!61 &1869692363428918900
 BoxCollider2D:
