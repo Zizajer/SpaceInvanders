@@ -117,6 +117,7 @@ MonoBehaviour:
   Bullet: {fileID: 7514728912918025161, guid: 25a9daf4ba86cb445806e4f3504229af, type: 3}
   ShootForce: 15000
   shootProbability: 0.01
+  spriteRenderer: {fileID: 5375471412943775534}
 --- !u!61 &5871066094063223999
 BoxCollider2D:
   m_ObjectHideFlags: 0

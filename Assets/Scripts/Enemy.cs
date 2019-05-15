@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public float ShootForce;
     public float shootProbability;
     private AudioSource audio;
+    public SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()

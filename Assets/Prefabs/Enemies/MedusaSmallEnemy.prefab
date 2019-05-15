@@ -98,6 +98,7 @@ MonoBehaviour:
   Bullet: {fileID: 7514728912918025161, guid: 25a9daf4ba86cb445806e4f3504229af, type: 3}
   ShootForce: 15000
   shootProbability: 0.01
+  spriteRenderer: {fileID: 1122504121963161149}
 --- !u!95 &1122504121963161151
 Animator:
   serializedVersion: 3

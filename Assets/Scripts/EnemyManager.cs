@@ -19,6 +19,10 @@ public class EnemyManager : MonoBehaviour
         enemies = new List<Enemy>(GetComponentsInChildren<Enemy>());
         SpeedUpMusicStep = 0.4f / enemies.Count;
         SpeedChangeStep = (MaxMovementSpeedOfEnemies - MovementSpeedOfEnemies) / enemies.Count;
+        foreach (Enemy enemy in enemies)
+        {
+            enemy.spriteRenderer.color = GetColor();
+        }
     }
 
     private void Update()
@@ -41,7 +45,7 @@ public class EnemyManager : MonoBehaviour
             MovementSpeedOfEnemies -= SpeedChangeStep;
         else
             MovementSpeedOfEnemies += SpeedChangeStep;
-       
+        
         Camera.main.GetComponent<AudioSource>().pitch += SpeedUpMusicStep; 
     }
 
@@ -49,5 +53,29 @@ public class EnemyManager : MonoBehaviour
     {
         MovementSpeedOfEnemies = -(MovementSpeedOfEnemies);
         transform.position += new Vector3(0, GoDownStep, 0);
+        foreach (Enemy enemy in enemies)
+        {
+            enemy.spriteRenderer.color = GetColor();
+        }
+    }
+
+    private Color GetColor()
+    {
+        float randomNumber =  Random.Range(1,5);
+        switch (randomNumber)
+        {
+            case 1:
+                return Color.blue;
+            case 2:
+                return Color.red;
+            case 3:
+                return Color.yellow;
+            case 4:
+                return Color.green;
+            case 5:
+                return Color.magenta;
+            default:
+                return Color.white;
+        }
     }
 }
