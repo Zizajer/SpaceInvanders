@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
         if (randomNumber < shootProbability)
         {
             GameObject bullet = Instantiate(Bullet, transform.position, new Quaternion(0, 0, 0, 0));
+            bullet.GetComponent<SpriteRenderer>().color = spriteRenderer.color;
             bullet.GetComponent<Rigidbody2D>().AddForce(Vector3.down * ShootForce * Time.deltaTime);
         }
         Invoke("Shoot", 1f);
