@@ -26,7 +26,8 @@ public class Enemy : MonoBehaviour
         if(collision.tag == "PlayerBullet")
         {
             ExplosionEffect.startColor = spriteRenderer.color;
-            Instantiate(ExplosionEffect, transform.position, new Quaternion(0, 0, 0, 0));
+            ParticleSystem particleEffect = Instantiate(ExplosionEffect, transform.position, new Quaternion(0, 0, 0, 0));
+            Destroy(particleEffect.gameObject, particleEffect.duration);
             GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().IncreaseScore(scoreAmountIncrease);
             GetComponentInParent<EnemyManager>().SpeedUpGame();
             audio.PlayOneShot(OnDeathSound);
@@ -46,4 +47,6 @@ public class Enemy : MonoBehaviour
         }
         Invoke("Shoot", 1f);
     }
+
+
 }
