@@ -21,8 +21,8 @@ public class UIManager : MonoBehaviour
     
     void Update()
     {
-        ScoreText.text = "Score : " + Score;
-        LivesText.text = "Lives : " + PlayerLives;
+        ScoreText.text = "Score :  " + Score;
+        LivesText.text = "Lives :  " + PlayerLives;
 
         if (PlayerLives <= 0)
         {

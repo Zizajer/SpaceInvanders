@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class EnemyManager : MonoBehaviour
         foreach (Enemy enemy in enemies)
         {
             enemy.spriteRenderer.color = GetColor();
+        }
+        foreach (Text text in GameObject.FindGameObjectWithTag("UI").GetComponentsInChildren<Text>())
+        {
+            text.color = GetColor();
         }
     }
 
@@ -61,6 +66,11 @@ public class EnemyManager : MonoBehaviour
         foreach (Enemy enemy in enemies)
         {
             enemy.spriteRenderer.color = GetColor();
+        }
+
+        foreach(Text text in GameObject.FindGameObjectWithTag("UI").GetComponentsInChildren<Text>())
+        {
+            text.color = GetColor();
         }
     }
 
