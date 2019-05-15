@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5658432678096055643}
   m_Layer: 0
   m_Name: SkullEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c3abb3b0599ef468f5eaad42b7be6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 0
   OnDeathSound: {fileID: 8300000, guid: 7d717c5e594d5bf4cba389a92b6d347f, type: 3}
 --- !u!61 &5658432678096055643
 BoxCollider2D:
