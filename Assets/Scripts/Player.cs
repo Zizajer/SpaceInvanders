@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     public AudioClip shotingSound;
     public AudioClip deathSound;
     private AudioSource audio;
-    public int lives;
 
 
     // Start is called before the first frame update
@@ -43,6 +42,24 @@ public class Player : MonoBehaviour
             audio.PlayOneShot(shotingSound);
             GameObject bullet = Instantiate(Bullet, transform.position, new Quaternion(0,0,0,0));
             bullet.GetComponent<Rigidbody2D>().AddForce(Vector3.up * ShootForce * Time.deltaTime);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "EnemyBullet")
+        {
+            Destroy(collision.gameObject);
+            audio.PlayOneShot(deathSound);
+            GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().TakePlayerLife(1);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.tag == "Enemy")
+        {
+            GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().TakePlayerLife(100);
         }
     }
 

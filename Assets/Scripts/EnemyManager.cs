@@ -28,6 +28,11 @@ public class EnemyManager : MonoBehaviour
     private void Update()
     {
         enemies = new List<Enemy>(GetComponentsInChildren<Enemy>());
+        if(enemies.Count == 0)
+        {
+            GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().SetGameWon();
+        }
+
         foreach (Enemy enemy in enemies)
         {
             enemy.transform.position += new Vector3(MovementSpeedOfEnemies * Time.deltaTime, 0, 0);

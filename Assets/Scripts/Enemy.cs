@@ -10,11 +10,13 @@ public class Enemy : MonoBehaviour
     public float shootProbability;
     private AudioSource audio;
     public SpriteRenderer spriteRenderer;
+    private float scoreAmountIncrease;
 
     // Start is called before the first frame update
     void Start()
     {
         audio = GetComponentInParent<AudioSource>();
+        scoreAmountIncrease = 50;
         Invoke("Shoot", 1f);
     }
 
@@ -22,6 +24,7 @@ public class Enemy : MonoBehaviour
     {
         if(collision.tag == "PlayerBullet")
         {
+            GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().IncreaseScore(scoreAmountIncrease);
             GetComponentInParent<EnemyManager>().SpeedUpGame();
             audio.PlayOneShot(OnDeathSound);
             Destroy(collision.gameObject);
