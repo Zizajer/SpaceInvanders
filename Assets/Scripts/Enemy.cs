@@ -34,6 +34,11 @@ public class Enemy : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
+
+        if (collision.tag == "Bunker")
+        {
+            Destroy(collision.gameObject);
+        }
     }
     
 
