@@ -24,11 +24,11 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.position += new Vector3(-MovementSpeed, 0, 0);
+            transform.position += new Vector3(-MovementSpeed * Time.deltaTime, 0, 0);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.position += new Vector3(MovementSpeed, 0, 0);
+            transform.position += new Vector3(MovementSpeed * Time.deltaTime, 0, 0);
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
