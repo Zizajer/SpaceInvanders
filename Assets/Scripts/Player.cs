@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public float MovementSpeed = 0;
     public float ShootForce = 0;
     public GameObject Bullet;
+    public Transform boundaryLeft;
+    public Transform boundaryRight;
     public AudioClip shotingSound;
     public AudioClip deathSound;
     private AudioSource audio;
@@ -24,11 +26,17 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.position += new Vector3(-MovementSpeed * Time.deltaTime, 0, 0);
+            if (!(transform.position.x < boundaryLeft.position.x))
+            {
+                transform.position += new Vector3(-MovementSpeed * Time.deltaTime, 0, 0);
+            }
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.position += new Vector3(MovementSpeed * Time.deltaTime, 0, 0);
+            if (!(transform.position.x > boundaryRight.position.x))
+            {
+                transform.position += new Vector3(MovementSpeed * Time.deltaTime, 0, 0);
+            }
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
