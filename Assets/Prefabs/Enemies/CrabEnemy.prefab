@@ -95,6 +95,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnDeathSound: {fileID: 8300000, guid: 7d717c5e594d5bf4cba389a92b6d347f, type: 3}
+  Bullet: {fileID: 7514728912918025161, guid: 25a9daf4ba86cb445806e4f3504229af, type: 3}
+  ShootForce: 15000
+  shootProbability: 0.01
 --- !u!61 &1869692363428918900
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -32,7 +32,6 @@ public class EnemyManager : MonoBehaviour
                ChangeDirection();
                break;
             }
-
         }
     }
 
