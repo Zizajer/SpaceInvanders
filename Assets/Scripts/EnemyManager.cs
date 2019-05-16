@@ -62,7 +62,7 @@ public class EnemyManager : MonoBehaviour
         foreach (Enemy enemy in enemies)
         {
             enemy.transform.position += new Vector3(movementSpeedOfEnemies * Time.deltaTime, 0, 0);
-            if (enemy.transform.position.x < BoundaryLeft.position.x + 0.5f || enemy.transform.position.x > BoundaryRight.position.x - + 0.5f)
+            if (enemy.transform.position.x < BoundaryLeft.position.x || enemy.transform.position.x > BoundaryRight.position.x )
             {
                ChangeDirection();
                break;

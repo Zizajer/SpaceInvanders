@@ -35,19 +35,8 @@ public class Enemy : MonoBehaviour
             audio.PlayOneShot(OnDeathSound);
             Destroy(collision.gameObject);
         }
-
-        if (collision.tag == "Bunker")
-        {
-            Destroy(collision.gameObject);
-        }
-        
-        if (collision.tag == "Player")
-        {
-            Destroy(collision.gameObject);
-            GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().TakePlayerLife(100);
-        }
     }
-    
+
 
     void Shoot()
     {

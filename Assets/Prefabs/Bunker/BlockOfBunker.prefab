@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4343708963458736115}
   - component: {fileID: 6262171220747803612}
   - component: {fileID: 8988795363501939041}
+  - component: {fileID: 2373516356350663872}
   m_Layer: 0
   m_Name: BlockOfBunker
   m_TagString: Bunker
@@ -90,7 +91,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -106,3 +107,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2373516356350663872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4347241401033268335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed9d4e3eed672d438010a6f76c0e7dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExplosionEffect: {fileID: 29962641151626369, guid: d9b7b0a180cc60d49b8929b026739d0e,
+    type: 3}

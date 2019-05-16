@@ -2,31 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBullet : MonoBehaviour
+public class BlockOfBunker : MonoBehaviour
 {
     public ParticleSystem ExplosionEffect;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.tag == "PlayerBullet")
+        if (collision.collider.tag == "Enemy")
         {
             PlayEffect();
-            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
+        
+    }
 
-        if (collision.tag == "Bunker")
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "PlayerBullet" || collision.tag == "EnemyBullet")
         {
             PlayEffect();
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
         }
     }
 
     private void PlayEffect()
     {
-        ExplosionEffect.startColor = GetComponent<SpriteRenderer>().color;
         ParticleSystem particleEffect = Instantiate(ExplosionEffect, transform.position, new Quaternion(0, 0, 0, 0));
         Destroy(particleEffect.gameObject, particleEffect.duration);
     }
+
+
+
 }
