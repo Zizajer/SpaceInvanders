@@ -32,7 +32,7 @@ public class SpecialEnemy : MonoBehaviour
             ExplosionEffect.startColor = spriteRenderer.color;
             ParticleSystem particleEffect = Instantiate(ExplosionEffect, transform.position, new Quaternion(0, 0, 0, 0));
             Destroy(particleEffect.gameObject, particleEffect.duration);
-            GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().IncreaseScore(ScoreAmountIncrease);
+            GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().IncreaseScore(ScoreAmountIncrease,transform.position,spriteRenderer.color);
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }

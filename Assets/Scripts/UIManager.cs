@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
     public Text LivesText;
     public GameObject EndGamePanel;
     public AudioClip EndGameAudioClip;
+    public GameObject DisplayTextOnDeathObject;
+    public float DisplayTextOnDeathObjectTime;
     private float score;
     private float PlayerLives;
 
@@ -26,37 +28,51 @@ public class UIManager : MonoBehaviour
     {
         ScoreText.text = "Score :  " + Score;
         LivesText.text = "Lives :  " + PlayerLives;
-
-        if (PlayerLives <= 0)
-        {
-            Time.timeScale = 0;
-            EndGamePanel.SetActive(true);
-            EndGamePanel.GetComponentInChildren<Text>().text = "YOU LOST !!! Your Score  " + GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().score;
-            Camera.main.GetComponent<AudioSource>().Stop();
-        }
     }
 
-    public void IncreaseScore(float amount)
+    public void IncreaseScore(float amount, Vector3 position, Color currentColor)
     {
         Score += amount;
+        GameObject text = Instantiate(DisplayTextOnDeathObject,worldToUISpace(GetComponent<Canvas>(),position),new Quaternion(0,0,0,0),transform);
+        text.GetComponent<ShortTimeDisplayText>().TextToDisplay = amount.ToString();
+        text.GetComponent<ShortTimeDisplayText>().TimeCanBeDisplayed = DisplayTextOnDeathObjectTime;
+        text.GetComponent<Text>().color = currentColor;
+
     }
 
     public void TakePlayerLife(float amount)
     {
         PlayerLives -= amount;
+        if (PlayerLives <= 0)
+        {
+            SetEndGamePanel("LOST");
+        }
     }
 
 
-    public void SetGameWon()
+    public void SetEndGamePanel(string gameResult)
     {
         Time.timeScale = 0;
-        EndGamePanel.SetActive(true);
-        EndGamePanel.GetComponentInChildren<Text>().text = "YOU WIN !!! Your Score  " + GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().score;
+        GameObject endGamePanel = Instantiate(EndGamePanel, transform);
+        endGamePanel.GetComponentInChildren<Text>().text = "YOU " + gameResult + " !!! Your Score  " + GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().score;
+        endGamePanel.GetComponentInChildren<Button>().onClick.AddListener(() => RestartGame());
         Camera.main.GetComponent<AudioSource>().Stop();
     }
 
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name.ToString());
+    }
+
+    private Vector3 worldToUISpace(Canvas parentCanvas, Vector3 worldPos)
+    {
+        //Convert the world for screen point so that it can be used with ScreenPointToLocalPointInRectangle function
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
+        Vector2 movePos;
+
+        //Convert the screenpoint to ui rectangle local point
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, screenPos, parentCanvas.worldCamera, out movePos);
+        //Convert the local point to world point
+        return parentCanvas.transform.TransformPoint(movePos);
     }
 }

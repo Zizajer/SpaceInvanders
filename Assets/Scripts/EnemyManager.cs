@@ -54,7 +54,9 @@ public class EnemyManager : MonoBehaviour
         enemies = new List<Enemy>(GetComponentsInChildren<Enemy>());
         if(enemies.Count == 0)
         {
-            GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().SetGameWon();
+            GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().SetEndGamePanel("WON");
+            Destroy(GameObject.FindGameObjectWithTag("Player"));
+            Destroy(gameObject);
         }
 
         foreach (Enemy enemy in enemies)
@@ -65,6 +67,14 @@ public class EnemyManager : MonoBehaviour
                ChangeDirection();
                break;
             }
+
+            if (enemy.transform.position.y < BoundaryLeft.position.y)
+            {
+                GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().TakePlayerLife(100);
+                Destroy(gameObject);
+                break;
+            }
+
         }
 
         

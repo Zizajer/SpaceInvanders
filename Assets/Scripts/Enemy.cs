@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
             ExplosionEffect.startColor = spriteRenderer.color;
             ParticleSystem particleEffect = Instantiate(ExplosionEffect, transform.position, new Quaternion(0, 0, 0, 0));
             Destroy(particleEffect.gameObject, particleEffect.duration);
-            GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().IncreaseScore(scoreAmountIncrease);
+            GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().IncreaseScore(scoreAmountIncrease,transform.position,spriteRenderer.color);
             GetComponentInParent<EnemyManager>().SpeedUpGame();
             audio.PlayOneShot(OnDeathSound);
             Destroy(collision.gameObject);
@@ -43,6 +43,7 @@ public class Enemy : MonoBehaviour
         
         if (collision.tag == "Player")
         {
+            Destroy(collision.gameObject);
             GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().TakePlayerLife(100);
         }
     }
