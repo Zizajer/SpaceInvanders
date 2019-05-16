@@ -54,14 +54,6 @@ public class Player : MonoBehaviour
             GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().TakePlayerLife(1);
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.collider.tag == "Enemy")
-        {
-            GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().TakePlayerLife(100);
-        }
-    }
-
+    
 
 }

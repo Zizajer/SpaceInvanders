@@ -39,6 +39,11 @@ public class Enemy : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+        
+        if (collision.tag == "Player")
+        {
+            GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().TakePlayerLife(100);
+        }
     }
     
 

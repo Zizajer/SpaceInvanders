@@ -10,6 +10,9 @@ public class EnemyManager : MonoBehaviour
     public float GoDownStep;
     public Transform boundaryLeft;
     public Transform boundaryRight;
+    public Transform UFOSpawnPoint;
+    public float UFOSpawnProbability;
+    public GameObject UFO;
     private List<Enemy> enemies;
     private float SpeedUpMusicStep;
     private float SpeedChangeStep;
@@ -28,6 +31,8 @@ public class EnemyManager : MonoBehaviour
         {
             text.color = GetColor();
         }
+
+        Invoke("CheckForUFO", 1f);
     }
 
     private void Update()
@@ -47,6 +52,8 @@ public class EnemyManager : MonoBehaviour
                break;
             }
         }
+
+        
     }
 
     public void SpeedUpGame()
@@ -72,6 +79,16 @@ public class EnemyManager : MonoBehaviour
         {
             text.color = GetColor();
         }
+    }
+
+    private void CheckForUFO()
+    {
+        float randomNumber = Random.Range(0f, 1f);
+        if (randomNumber < UFOSpawnProbability)
+        {
+            Instantiate(UFO, UFOSpawnPoint.position, new Quaternion(0, 0, 0, 0));
+        }
+        Invoke("CheckForUFO", 1f);
     }
 
     private Color GetColor()

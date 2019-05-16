@@ -18,11 +18,11 @@ public class SpecialEnemy : MonoBehaviour
     void Update()
     {
         transform.position += new Vector3(MovementSpeed * Time.deltaTime, 0, 0);
-    }
 
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
+        if (transform.position.x < GameObject.Find("BoundaryLeft").transform.position.x - 2)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

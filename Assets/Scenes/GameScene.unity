@@ -1957,7 +1957,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -5566,6 +5566,9 @@ MonoBehaviour:
   GoDownStep: -0.25
   boundaryLeft: {fileID: 1433467775}
   boundaryRight: {fileID: 1235360262}
+  UFOSpawnPoint: {fileID: 1239289729}
+  UFOSpawnProbability: 0.02
+  UFO: {fileID: 3547318471282604952, guid: 19d879db88d2c734aa8117fddb704b3a, type: 3}
 --- !u!1001 &1989303095
 PrefabInstance:
   m_ObjectHideFlags: 0
