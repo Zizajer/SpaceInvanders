@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
     {
         if(collision.tag == "PlayerBullet")
         {
+            Destroy(gameObject);
             ExplosionEffect.startColor = spriteRenderer.color;
             ParticleSystem particleEffect = Instantiate(ExplosionEffect, transform.position, new Quaternion(0, 0, 0, 0));
             Destroy(particleEffect.gameObject, particleEffect.duration);
@@ -33,7 +34,6 @@ public class Enemy : MonoBehaviour
             GetComponentInParent<EnemyManager>().SpeedUpGame();
             audio.PlayOneShot(OnDeathSound);
             Destroy(collision.gameObject);
-            Destroy(gameObject);
         }
 
         if (collision.tag == "Bunker")

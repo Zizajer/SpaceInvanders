@@ -11,7 +11,7 @@ public class ShortTimeDisplayText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Text>().text = TextToDisplay;
+        GetComponent<Text>().text = "+ " + TextToDisplay;
         Destroy(gameObject, TimeCanBeDisplayed);
     }
 }

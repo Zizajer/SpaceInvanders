@@ -2334,7 +2334,7 @@ MonoBehaviour:
   EndGameAudioClip: {fileID: 8300000, guid: 5d52d5ff77435954a831fb1ca2e4d755, type: 3}
   DisplayTextOnDeathObject: {fileID: 6790365964489209478, guid: 91c18f3ddffa1914191722c987c445da,
     type: 3}
-  DisplayTextOnDeathObjectTime: 0.25
+  DisplayTextOnDeathObjectTime: 0.5
 --- !u!1001 &976237345
 PrefabInstance:
   m_ObjectHideFlags: 0
