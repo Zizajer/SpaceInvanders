@@ -9,9 +9,12 @@ public class UIManager : MonoBehaviour
     public Text ScoreText;
     public Text LivesText;
     public GameObject EndGamePanel;
-    private float Score;
+    public AudioClip EndGameAudioClip;
+    private float score;
     private float PlayerLives;
-    
+
+    public float Score { get => score; set => score = value; }
+
     void Start()
     {
         Time.timeScale = 1;
@@ -28,7 +31,8 @@ public class UIManager : MonoBehaviour
         {
             Time.timeScale = 0;
             EndGamePanel.SetActive(true);
-            EndGamePanel.GetComponentInChildren<Text>().text = "YOU LOST !!!";
+            EndGamePanel.GetComponentInChildren<Text>().text = "YOU LOST !!! Your Score  " + GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().score;
+            Camera.main.GetComponent<AudioSource>().Stop();
         }
     }
 
@@ -42,11 +46,13 @@ public class UIManager : MonoBehaviour
         PlayerLives -= amount;
     }
 
+
     public void SetGameWon()
     {
         Time.timeScale = 0;
         EndGamePanel.SetActive(true);
-        EndGamePanel.GetComponentInChildren<Text>().text = "YOU WIN !!!";
+        EndGamePanel.GetComponentInChildren<Text>().text = "YOU WIN !!! Your Score  " + GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().score;
+        Camera.main.GetComponent<AudioSource>().Stop();
     }
 
     public void RestartGame()

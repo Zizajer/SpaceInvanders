@@ -2539,6 +2539,7 @@ MonoBehaviour:
   ScoreText: {fileID: 2135082951}
   LivesText: {fileID: 1643103056}
   EndGamePanel: {fileID: 1355293597}
+  EndGameAudioClip: {fileID: 8300000, guid: 5d52d5ff77435954a831fb1ca2e4d755, type: 3}
 --- !u!1001 &976237345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3318,8 +3319,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 84.075}
-  m_SizeDelta: {x: 1280.4, y: 168.15}
+  m_AnchoredPosition: {x: 0, y: -26.8}
+  m_SizeDelta: {x: 1280.4, y: 390}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1159799019
 MonoBehaviour:
