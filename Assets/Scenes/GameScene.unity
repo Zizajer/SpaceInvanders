@@ -1114,7 +1114,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 773e564dca2505148a4cfaba4fa6798e, type: 3}
@@ -5562,11 +5562,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd01db30946a6b4bb9fec24b86184e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeedOfEnemies: 0.5
-  MaxMovementSpeedOfEnemies: 3
+  StartMovementSpeedOfEnemies: 0.75
+  MaxMovementSpeedOfEnemies: 4
+  StartAnimationSpeedOfEnemies: 1
+  MaxAnimationSpeedOfEnemies: 2
   GoDownStep: -0.25
-  boundaryLeft: {fileID: 1433467775}
-  boundaryRight: {fileID: 1235360262}
+  BoundaryLeft: {fileID: 1433467775}
+  BoundaryRight: {fileID: 1235360262}
   UFOSpawnPoint: {fileID: 1239289729}
   UFOSpawnProbability: 0.02
   UFO: {fileID: 3547318471282604952, guid: 19d879db88d2c734aa8117fddb704b3a, type: 3}
@@ -6386,6 +6388,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2303683501798973009, guid: bcbbde778c0892b4da2dd60868e8704f,
+        type: 3}
+      propertyPath: boundaryLeft
+      value: 
+      objectReference: {fileID: 1433467775}
+    - target: {fileID: 2303683501798973009, guid: bcbbde778c0892b4da2dd60868e8704f,
+        type: 3}
+      propertyPath: boundaryRight
+      value: 
+      objectReference: {fileID: 1235360262}
     - target: {fileID: 1869692363428918903, guid: bcbbde778c0892b4da2dd60868e8704f,
         type: 3}
       propertyPath: m_Color.r
@@ -6401,16 +6413,6 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2303683501798973009, guid: bcbbde778c0892b4da2dd60868e8704f,
-        type: 3}
-      propertyPath: boundaryLeft
-      value: 
-      objectReference: {fileID: 1433467775}
-    - target: {fileID: 2303683501798973009, guid: bcbbde778c0892b4da2dd60868e8704f,
-        type: 3}
-      propertyPath: boundaryRight
-      value: 
-      objectReference: {fileID: 1235360262}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcbbde778c0892b4da2dd60868e8704f, type: 3}
 --- !u!1001 &5367519955117734405

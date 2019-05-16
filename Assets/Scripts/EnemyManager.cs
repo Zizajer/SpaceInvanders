@@ -5,28 +5,42 @@ using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour
 {
-    public float MovementSpeedOfEnemies;
+    public float StartMovementSpeedOfEnemies;
+    private float movementSpeedOfEnemies;
     public float MaxMovementSpeedOfEnemies;
+    public float StartAnimationSpeedOfEnemies;
+    private float animationSpeedOfEnemies;
+    public float MaxAnimationSpeedOfEnemies;
     public float GoDownStep;
-    public Transform boundaryLeft;
-    public Transform boundaryRight;
+    public Transform BoundaryLeft;
+    public Transform BoundaryRight;
     public Transform UFOSpawnPoint;
     public float UFOSpawnProbability;
     public GameObject UFO;
     private List<Enemy> enemies;
-    private float SpeedUpMusicStep;
-    private float SpeedChangeStep;
+    private float speedUpMusicStep;
+    private float speedChangeStep;
+    private float speedUpAnimationStep;
+    
 
-    // Start is called before the first frame update
     void Start()
     {
         enemies = new List<Enemy>(GetComponentsInChildren<Enemy>());
-        SpeedUpMusicStep = 0.4f / enemies.Count;
-        SpeedChangeStep = (MaxMovementSpeedOfEnemies - MovementSpeedOfEnemies) / enemies.Count;
+
+        speedUpMusicStep = 0.4f / enemies.Count;
+
+        movementSpeedOfEnemies = StartMovementSpeedOfEnemies;
+        speedChangeStep = (MaxMovementSpeedOfEnemies - StartMovementSpeedOfEnemies) / enemies.Count;
+
+        animationSpeedOfEnemies = StartAnimationSpeedOfEnemies;
+        speedUpAnimationStep = (MaxAnimationSpeedOfEnemies - StartAnimationSpeedOfEnemies) / enemies.Count;
+
         foreach (Enemy enemy in enemies)
         {
             enemy.spriteRenderer.color = GetColor();
+            enemy.animator.speed = animationSpeedOfEnemies;
         }
+
         foreach (Text text in GameObject.FindGameObjectWithTag("UI").GetComponentsInChildren<Text>())
         {
             text.color = GetColor();
@@ -45,8 +59,8 @@ public class EnemyManager : MonoBehaviour
 
         foreach (Enemy enemy in enemies)
         {
-            enemy.transform.position += new Vector3(MovementSpeedOfEnemies * Time.deltaTime, 0, 0);
-            if (enemy.transform.position.x < boundaryLeft.position.x + 0.5f || enemy.transform.position.x > boundaryRight.position.x - + 0.5f)
+            enemy.transform.position += new Vector3(movementSpeedOfEnemies * Time.deltaTime, 0, 0);
+            if (enemy.transform.position.x < BoundaryLeft.position.x + 0.5f || enemy.transform.position.x > BoundaryRight.position.x - + 0.5f)
             {
                ChangeDirection();
                break;
@@ -58,22 +72,25 @@ public class EnemyManager : MonoBehaviour
 
     public void SpeedUpGame()
     {
-        if (MovementSpeedOfEnemies < 0)
-            MovementSpeedOfEnemies -= SpeedChangeStep;
+        if (movementSpeedOfEnemies < 0)
+            movementSpeedOfEnemies -= speedChangeStep;
         else
-            MovementSpeedOfEnemies += SpeedChangeStep;
-        
-        Camera.main.GetComponent<AudioSource>().pitch += SpeedUpMusicStep; 
+            movementSpeedOfEnemies += speedChangeStep;
+
+        animationSpeedOfEnemies += speedUpAnimationStep;
+
+        Camera.main.GetComponent<AudioSource>().pitch += speedUpMusicStep; 
     }
 
     public void ChangeDirection()
     {
-        MovementSpeedOfEnemies = -(MovementSpeedOfEnemies);
+        movementSpeedOfEnemies = -(movementSpeedOfEnemies);
         transform.position += new Vector3(0, GoDownStep, 0);
+
         foreach (Enemy enemy in enemies)
         {
             enemy.spriteRenderer.color = GetColor();
-            enemy.transform.position += new Vector3(MovementSpeedOfEnemies * Time.deltaTime, 0, 0);
+            enemy.transform.position += new Vector3(movementSpeedOfEnemies * Time.deltaTime, 0, 0);
         }
 
         foreach(Text text in GameObject.FindGameObjectWithTag("UI").GetComponentsInChildren<Text>())

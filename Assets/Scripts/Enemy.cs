@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float shootProbability;
     private AudioSource audio;
     public SpriteRenderer spriteRenderer;
+    public Animator animator;
     public ParticleSystem ExplosionEffect;
     private float scoreAmountIncrease;
 
