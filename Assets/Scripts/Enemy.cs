@@ -37,6 +37,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.tag == "Player")
+        {
+            Destroy(gameObject);
+            GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().SetEndGamePanel("LOST");
+        }
+    }
+
 
     void Shoot()
     {

@@ -70,7 +70,7 @@ public class EnemyManager : MonoBehaviour
 
             if (enemy.transform.position.y < BoundaryLeft.position.y)
             {
-                GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().TakePlayerLife(100);
+                GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().SetEndGamePanel("LOST");
                 Destroy(gameObject);
                 break;
             }
