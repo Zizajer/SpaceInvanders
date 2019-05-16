@@ -73,6 +73,7 @@ public class EnemyManager : MonoBehaviour
         foreach (Enemy enemy in enemies)
         {
             enemy.spriteRenderer.color = GetColor();
+            enemy.transform.position += new Vector3(MovementSpeedOfEnemies * Time.deltaTime, 0, 0);
         }
 
         foreach(Text text in GameObject.FindGameObjectWithTag("UI").GetComponentsInChildren<Text>())
